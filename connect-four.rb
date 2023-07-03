@@ -22,7 +22,6 @@ def display_board(board)
 end
 
 def victory_row(board)
-  # Attempt at checking for horizontal win. The idea is iterating through board, then the row and counting X's. When it hits a "-", count resets.
   count = 0
   for row in board
     for col in row
