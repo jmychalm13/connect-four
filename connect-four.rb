@@ -40,8 +40,21 @@ def victory_row(board)
 end
 
 def victory_col(board)
+  count = 0
+  cols = 0
+  while cols < board[0].length
+    rows = board.length - 1
+    while rows >= 0
+      if board[rows][cols] == "X"
+        count += 1
+      end
+      rows -= 1
+    end
+    cols += 1
+  end
 end
 
+system "clear"
 puts "Enter 'board' to display board and play: "
 input = gets.chomp
 
@@ -56,12 +69,13 @@ while connect == false
   row = board.length - 1
   if board[row][col] == "-"
     board[row][col] = "X"
-    victory_row(board)
   elsif board[row][col] == "X"
     row -= 1 until board[row][col] == "-"
     board[row][col] = "X"
     connect = false
   end
+  victory_col(board)
+  victory_row(board)
   display_board(board)
   turn += 1
 end
